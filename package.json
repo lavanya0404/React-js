@@ -1,0 +1,21 @@
+{
+  "name": "namaste-react-code",
+  "version": "1.0.0",
+  "description": "React project",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lavanya0404/React-js.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Lavanya Y M",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
