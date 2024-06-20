@@ -10,16 +10,20 @@ const jsxHeading = (
   </h1>);
 
 const HeadingComponent = () => {
-   return <h1>Namaste heading1 Function</h1>
+   return <h1>Namaste Function component1</h1>
 };
 const Title = () => (
   <h1>Title React component</h1>
 );
+const num = 100;
 const HeadingComponent2 = () => (
   <div>
     <Title />
-    <HeadingComponent/>
-    <h1>Namaste React Function</h1>
+    <Title></Title>
+    {Title()}
+    <HeadingComponent />
+    <h2>{num+num}</h2>
+    <h1>Namaste React Function component2</h1>
     </div>
 );
 
