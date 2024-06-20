@@ -10,15 +10,20 @@ const jsxHeading = (
   </h1>);
 
 const HeadingComponent = () => {
-   return <h1>Namaste React Function</h1>
+   return <h1>Namaste heading1 Function</h1>
 };
-
+const Title = () => (
+  <h1>Title React component</h1>
+);
 const HeadingComponent2 = () => (
-    <div>
+  <div>
+    <Title />
+    <HeadingComponent/>
     <h1>Namaste React Function</h1>
     </div>
 );
+
 const fn = () => true;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(jsxHeading);
+root.render(<HeadingComponent2/>);
