@@ -20,7 +20,7 @@ const Header = () => {
 };
 
 const stylecard = {
-  backgroundColor: "#F0F0F0",
+  backgroundColor: "#fff0f0",
 };
 
 // };
@@ -45,8 +45,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         <RestroCard />
-        <RestroCard/>
-        
+        <RestroCard/>  
       </div>
     </div>
   )
