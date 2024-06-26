@@ -934,6 +934,7 @@ const RestroCard = (props) => {
     </div>
   );
 };
+// not using any key (not acceptable) <<< index as key <<<<<<<<< unique (best practice)
 const Body = () => {
   return (
     <div className="body">
@@ -944,9 +945,10 @@ const Body = () => {
             return <RestroCard resData={res} />;
           })
         } */}
-        {
-          resList.map((res) => <RestroCard resData={res} />)
-        }
+
+        {resList.map((res) => (
+          <RestroCard key={res.info.id} resData={res} />
+        ))}
       </div>
     </div>
   );
