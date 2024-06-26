@@ -95,12 +95,7 @@ const resObj = {
     },
     ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
   },
-  analytics: {},
-  cta: {
-    link: "swiggy://menu?restaurant_id=878275",
-    text: "RESTAURANT_MENU",
-    type: "DEEPLINK",
-  },
+  
   info: {
     id: "788304",
     name: "Wow! China",
@@ -165,13 +160,72 @@ const resObj = {
     },
     ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
   },
-  analytics: {},
-  cta: {
-    link: "swiggy://menu?restaurant_id=788304",
-    text: "RESTAURANT_MENU",
-    type: "DEEPLINK",
+  info: {
+    id: "108109",
+    name: "Kabab Magic",
+    cloudinaryImageId: "n2kdrmerp4xec1sxb3sw",
+    locality: "Basavanagudi",
+    areaName: "Basavanagudi",
+    costForTwo: "₹300 for two",
+    cuisines: ["Chinese", "South Indian", "Mexican", "Kerala"],
+    avgRating: 4.4,
+    parentId: "527",
+    avgRatingString: "4.4",
+    totalRatingsString: "10K+",
+    promoted: true,
+    adTrackingId:
+      "cid=14726401~p=1~adgrpid=14726401#ag1~mp=SWIGGY_IN~bl=FOOD~aet=RESTAURANT~aeid=108109~eid=fe6b2cff-3aaf-4a1a-8c92-cd7a31e0ef1d~srvts=1719412141643~collid=45995",
+    sla: {
+      deliveryTime: 30,
+      lastMileTravel: 3,
+      serviceability: "SERVICEABLE",
+      slaString: "25-30 mins",
+      lastMileTravelString: "3.0 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+    availability: {
+      nextCloseTime: "2024-06-26 23:00:00",
+      opened: true,
+    },
+    badges: {},
+    isOpen: true,
+    aggregatedDiscountInfoV2: {},
+    type: "F",
+    badgesV2: {
+      entityBadges: {
+        textExtendedBadges: {},
+        textBased: {},
+        imageBased: {},
+      },
+    },
+    differentiatedUi: {
+      displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      differentiatedUiMediaDetails: {
+        mediaType: "ADS_MEDIA_ENUM_IMAGE",
+        lottie: {},
+        video: {},
+      },
+    },
+    reviewsSummary: {},
+    displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    restaurantOfferPresentationInfo: {},
+    externalRatings: {
+      aggregatedRating: {
+        rating: "--",
+      },
+    },
+    ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+  },
+  "analytics": {
+                      
+  },
+  "cta": {
+    "link": "swiggy://menu?restaurant_id=108109",
+    "text": "RESTAURANT_MENU",
+    "type": "DEEPLINK"
   },
 };
+
 // Destructuring
 const RestroCard1 = (props) => {
   console.log(props);
@@ -193,14 +247,14 @@ const RestroCard = (props) => {
   return (
     <div className="res-card" style={stylecard}>
       <img
-        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/zbrpxvywfsrrb7os11jf"
+        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/n2kdrmerp4xec1sxb3sw"
         className="res-img"
       ></img>
-     <h3>{resData.info.name}</h3>
+      <h3>{resData.info.name}</h3>
       <h4>{resData.info.cuisines.join(" ")}</h4>
       <h4>{resData.info.avgRating}</h4>
       <h4>{resData.info.costForTwo}</h4>
-      <h4>{ resData.info.sla.deliveryTime} minutes</h4>
+      <h4>{resData.info.sla.deliveryTime} minutes</h4>
     </div>
   );
 };
@@ -209,7 +263,7 @@ const Body = () => {
     <div className="body">
       <div className="search">Search</div>
       <div className="res-container">
-        <RestroCard resData = {resObj} />
+        <RestroCard resData={resObj} />
       </div>
     </div>
   );
