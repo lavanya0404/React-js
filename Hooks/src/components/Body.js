@@ -1,25 +1,28 @@
-import RestroCard from './RestroCard'
-import resList from '../utils/mockData'
+import RestroCard from "./RestroCard"
+import resList from "../utils/mockData"
+import {useState} from "react";
+
 const Body = () => {
+  const [listOfRest,setlistOfRest] = useState(resList);
   return (
-    <div className='body'>
-      <div className='filter'>
+    <div className="body">
+      <div className="filter">
         <button
-          className='filter-btn'
+          className="filter-btn"
           onClick={() => {
-            Console.log('Button-clicked')
+            filteredList = listOfRest.filter((rest) => rest.info.avgRating > 4.5)
+            setlistOfRest(filteredList)
           }}
         >
-          Top rated Restaurants
+          Top rated restaurent
         </button>
       </div>
-      <div className='res-container'>
-        {resList.map(res => (
+      <div className="res-container">
+        {listOfRest.map((res) => (
           <RestroCard key={res.info.id} resData={res} />
         ))}
       </div>
     </div>
-  )
-}
-
-export default Body
+  );
+};
+export default Body;
