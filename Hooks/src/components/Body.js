@@ -1,20 +1,25 @@
-import RestroCard from './RestroCard'
-import resList from '../utils/mockData'
+import RestroCard from "./RestroCard";
+import resList from "../utils/mockData";
 const Body = () => {
   return (
-    <div className='body'>
-      <div className='filter'>
-        <button>
-          l c Top rated Restaurants
+    <div className="body">
+      <div className="filter">
+        <button
+          className="filter-btn"
+          onClick={() => {
+            console.Flog("Button-clicked");
+          }}
+        >
+          Top rated Restaurants
         </button>
       </div>
-      <div className='res-container'>
+      <div className="res-container">
         {resList.map((res) => (
-           <RestroCard key={res.info.id} resData={res} />
-         ))}
+          <RestroCard key={res.info.id} resData={res} />
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Body
+export default Body;
