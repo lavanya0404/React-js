@@ -3,8 +3,10 @@ import resList from '../utils/mockData'
 const Body = () => {
   return (
     <div className='body'>
-      <div className='search'>
-        Search
+      <div className='filter'>
+        <button>
+          l c Top rated Restaurants
+        </button>
       </div>
       <div className='res-container'>
         {resList.map((res) => (

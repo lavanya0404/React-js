@@ -1,6 +1,7 @@
 import { CDN_URL } from '../utils/constants'
 const stylecard = {
-  backgroundColor: '#fff0f0'
+  backgroundColor: '#fff0f0',
+  color :'#000000'
 }
 const RestroCard = (props) => {
   const { resData } = props;
