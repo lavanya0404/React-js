@@ -1,4 +1,7 @@
-
+import { CDN_URL } from '../utils/constants'
+const stylecard = {
+  backgroundColor: '#fff0f0'
+}
 const RestroCard = (props) => {
   const { resData } = props;
   const {
@@ -12,10 +15,9 @@ const RestroCard = (props) => {
   return (
     <div className="res-card" style={stylecard}>
       <img
-        src={
-          "" +
-          cloudinaryImageId
-        }
+        src=
+          {CDN_URL +
+          cloudinaryImageId}
         className="res-img"
       ></img>
       <h3>{name}</h3>

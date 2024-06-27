@@ -1,6 +1,5 @@
 import RestroCard from './RestroCard'
 import resList from '../utils/mockData'
-
 const Body = () => {
   return (
     <div className='body'>
