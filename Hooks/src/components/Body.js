@@ -1,16 +1,32 @@
 import RestroCard from "./RestroCard"
 import resList from "../utils/mockData"
-import {useState} from "react";
-
+import { useState } from "react"
+import { useEffect } from "react"
+import Shimmer from "./Shimmer"
 const Body = () => {
-  const [listOfRest,setlistOfRest] = useState(resList);
+  const [listOfRest, setlistOfRest] = useState([])
+  //after rendering of body function after the render cycle useEffect will call the callback function
+  useEffect(() => {
+    fetchData();
+  }, [])
+  const fetchData = async () => {
+    const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=12.96340&lng=77.58550");
+    const jsonData = await data.json();
+    console.log(jsonData);
+    setlistOfRest(jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+  };
+  if(listOfRest.length==0){
+    return <Shimmer/>;
+  }
   return (
     <div className="body">
       <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
-            filteredList = listOfRest.filter((rest) => rest.info.avgRating > 4.5)
+            filteredList = listOfRest.filter(
+              (rest) => rest.info.avgRating > 4.5
+            )
             setlistOfRest(filteredList)
           }}
         >
@@ -23,6 +39,6 @@ const Body = () => {
         ))}
       </div>
     </div>
-  );
-};
-export default Body;
+  )
+}
+export default Body
