@@ -70,3 +70,19 @@ padding: 10px 0px 0px 10px;
   padding:0px 20px;
   margin: 0px 10px;
 }
+.filter-bar{
+  display: flex;
+}
+.search-box{
+  height: 30px;
+  width: 200px;
+}
+.search-btn{
+  height: 35px;
+  width: 150px;
+}
+.filter-btn{
+  height: 35px;
+  margin: 10px;
+  width: 150px;
+}
