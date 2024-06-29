@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import Shimmer from "./Shimmer"
 const Body = () => {
   const [listOfRest, setlistOfRest] = useState([]) 
+  const [filteredRest, setFilteredRest] = useState([])
   const [searchText, setSearchText] = useState("")
   console.log("Body rendered")
   //after rendering of body function after the render cycle useEffect will call the callback function
@@ -21,6 +22,8 @@ const Body = () => {
       jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
         ?.restaurants
     )
+    setFilteredRest(jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+      ?.restaurants)
   }
   if (listOfRest.length == 0) {
     return <Shimmer />
@@ -40,7 +43,7 @@ const Body = () => {
           />
           <button className="search-btn" onClick={() => {
             const filteredList = listOfRest.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
-            setlistOfRest(filteredList);
+            setFilteredRest(filteredList);
           }}>
             Search
           </button>
@@ -51,8 +54,8 @@ const Body = () => {
             onClick={() => {
               filteredList = listOfRest.filter(
                 (rest) => rest.info.avgRating > 4
-              )
-              setlistOfRest(filteredList)
+              );
+              setlistOfRest(filteredList);
             }}
           >
             Top rated restaurent
@@ -60,7 +63,7 @@ const Body = () => {
         </div>
       </div>
       <div className="res-container">
-        {listOfRest.map((res) => (
+        {filteredRest.map((res) => (
           <RestroCard key={res.info.id} resData={res} />
         ))}
       </div>
