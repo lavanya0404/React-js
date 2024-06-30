@@ -11,7 +11,7 @@ const Header = () => {
         <ul>
         <button 
             onClick={() => {
-              window.location.href = "./about"
+              window.location.href = "./"
             }}
           >
           <li>Home</li>
