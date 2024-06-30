@@ -1,8 +1,6 @@
-import Header from "./Header";
 const Contact =()=>{
   return (
     <div>
-      <Header/>
       <h1>Contact Us</h1>
       <p>Feel free to reach out to us at any time.</p>
       <p>Email: info@example.com</p>
