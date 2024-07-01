@@ -38,7 +38,7 @@ const appRouter = createBrowserRouter([
       },
       // :resID is used for Dynamic restaurant identification
       {
-        path:"/restaurant/:resId",
+        path:"/restaurants/:resId",
         element:<RestaurantMenu />,
 
       }

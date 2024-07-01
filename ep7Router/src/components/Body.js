@@ -1,10 +1,11 @@
 import RestroCard from "./RestroCard"
-import resList from "../utils/mockData"
 import { useState } from "react"
 import { useEffect } from "react"
 import Shimmer from "./Shimmer"
+import { Link } from "react-router-dom"
+import RestaurantMenu from "./RestaurantMenu"
 const Body = () => {
-  const [listOfRest, setlistOfRest] = useState([]) 
+  const [listOfRest, setlistOfRest] = useState([])
   const [filteredRest, setFilteredRest] = useState([])
   const [searchText, setSearchText] = useState("")
   console.log("Body rendered")
@@ -17,13 +18,14 @@ const Body = () => {
       "https://www.swiggy.com/mapi/homepage/getCards?lat=12.96340&lng=77.58550"
     )
     const jsonData = await data.json()
-    console.log(jsonData)
     setlistOfRest(
       jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
         ?.restaurants
     )
-    setFilteredRest(jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
-      ?.restaurants)
+    setFilteredRest(
+      jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
+    )
   }
   if (listOfRest.length == 0) {
     return <Shimmer />
@@ -41,10 +43,15 @@ const Body = () => {
             }}
             placeholder="Search restaurant"
           />
-          <button className="search-btn" onClick={() => {
-            const filteredList = listOfRest.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
-            setFilteredRest(filteredList);
-          }}>
+          <button
+            className="search-btn"
+            onClick={() => {
+              const filteredList = listOfRest.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              )
+              setFilteredRest(filteredList)
+            }}
+          >
             Search
           </button>
         </div>
@@ -54,8 +61,8 @@ const Body = () => {
             onClick={() => {
               filteredList = listOfRest.filter(
                 (rest) => rest.info.avgRating > 4
-              );
-              setlistOfRest(filteredList);
+              )
+              setlistOfRest(filteredList)
             }}
           >
             Top rated restaurent
@@ -64,7 +71,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRest.map((res) => (
-          <RestroCard key={res.info.id} resData={res} />
+          <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
+            <RestroCard resData={res} />{" "}
+          </Link>
         ))}
       </div>
     </div>
