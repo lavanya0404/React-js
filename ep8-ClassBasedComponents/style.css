@@ -118,3 +118,12 @@ padding: 10px 0px 0px 10px;
   padding: 10px;
   margin: 20px;
 }
+.about-btn{
+  width: 90px;
+  height: 45Px;
+  margin: 10px;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: rgb(243, 172, 191);
+  cursor: pointer;
+}
