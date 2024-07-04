@@ -19,7 +19,7 @@ class UserClass extends React.Component {
   }
   render() {
     // const { name, location, contact } = this.props;
-    const { name,id,repos_url,avatar_url} = this.state.userInfo;
+    const { name,location,contact,avtar_URL } = this.state.userInfo;
     return (
       <div className="user-card">
         {/* <button
@@ -32,9 +32,9 @@ class UserClass extends React.Component {
         </button> */}
         {/* <h2>Count : {count}</h2> */}
         <h2>Name: {name}</h2>
-        <h3>ID: {id}</h3>
-        <h3>Repository link: {repos_url}</h3>
-        <img src={avatar_url}></img>
+        <h3>Location: {location}</h3>
+        <h3>Contact: {contact}</h3>
+        <img src={avtar_URL}></img>
       </div>
     )
   }
