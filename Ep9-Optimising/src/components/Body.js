@@ -3,13 +3,13 @@ import { useState } from "react"
 import { useEffect } from "react"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom"
-import RestaurantMenu from "./RestaurantMenu"
+import useOnlineStatus from '../utils/useOnlineStatus'
 const Body = () => {
   const [listOfRest, setlistOfRest] = useState([])
   const [filteredRest, setFilteredRest] = useState([])
   const [searchText, setSearchText] = useState("")
   console.log("Body rendered")
-  //after rendering of body function after the render cycle useEffect will call the callback function
+ 
   useEffect(() => {
     fetchData()
   }, [])
@@ -27,6 +27,11 @@ const Body = () => {
         ?.restaurants
     )
   }
+  if(useOnlineStatus===false){
+    return(
+      <h1>Network low check your internet connection</h1>
+    )
+  };
   if (listOfRest.length == 0) {
     return <Shimmer />
   }
