@@ -8,7 +8,7 @@ const Body = () => {
   const [listOfRest, setlistOfRest] = useState([])
   const [filteredRest, setFilteredRest] = useState([])
   const [searchText, setSearchText] = useState("")
-  console.log("Body rendered")
+  //console.log("Body rendered")
   //after rendering of body function after the render cycle useEffect will call the callback function
   useEffect(() => {
     fetchData()
