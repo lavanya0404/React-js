@@ -1,4 +1,4 @@
-import React from "react"
+import React, { lazy,Suspense } from "react"
 import ReactDOM from "react-dom/client"
 import { RouterProvider, createBrowserRouter,Outlet } from "react-router-dom"
 import Header from "./components/Header"
@@ -7,7 +7,18 @@ import About from "./components/About"
 import Contact from "./components/Contact"
 import RestaurantMenu from "./components/RestaurantMenu"
 import ErrorElement from "./components/ErrorElement"
-// not using any key (not acceptable) <<< index as key <<<<<<<<< unique (best practice)
+import Grocery from "./components/Grocery";
+
+
+/*
+ - Lazy loading
+ - Chunking
+ - Code Splitting
+ - Dynamic loading
+ - On demand loading
+*/
+const Grocery = lazy(()=>import ("./components/Grocery"));
+const About = lazy(()=>import ("./components/About"));
 const AppLayout = () => {
   return (
     <div>
@@ -41,6 +52,9 @@ const appRouter = createBrowserRouter([
         path:"/restaurants/:resId",
         element:<RestaurantMenu />,
 
+      },{
+        path:"/grocery",
+        element : <Suspense fallback={<h1>Loading...</h1>}><Grocery/></Suspense>
       }
     ],
     errorElement: <ErrorElement />,

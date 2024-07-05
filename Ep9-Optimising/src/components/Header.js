@@ -10,6 +10,9 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
+        <button>
+            <Link to="/grocery">Grocery</Link>
+          </button>
           <button>
             <Link to="/">Home</Link>
           </button>
