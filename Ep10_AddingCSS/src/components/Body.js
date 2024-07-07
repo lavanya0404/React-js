@@ -8,7 +8,6 @@ const Body = () => {
   const [listOfRest, setlistOfRest] = useState([])
   const [filteredRest, setFilteredRest] = useState([])
   const [searchText, setSearchText] = useState("")
-  console.log("Body rendered")
  
   useEffect(() => {
     fetchData()
@@ -32,16 +31,16 @@ const Body = () => {
       <h1>Network low check your internet connection</h1>
     )
   };
-  if (listOfRest.length == 0) {
-    return <Shimmer />
-  }
+  // if (listOfRest.length == 0) {
+  //   return <Shimmer />
+  // }
   return (
     <div className="body">
-      <div className="filter-bar">
-        <div className="search">
+      <div className="flex justify-between items-center">
+        <div className="m-4 p-5">
           <input
             type="text"
-            className="search-box"
+            className="px-4 mx-4"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value)
@@ -49,7 +48,7 @@ const Body = () => {
             placeholder="Search restaurant"
           />
           <button
-            className="search-btn"
+            className="p-4 mx-2 bg-green-300 rounded-lg"
             onClick={() => {
               const filteredList = listOfRest.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -60,9 +59,9 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="top-rated">
+        <div className="m-4">
           <button
-            className="filter-btn"
+            className="bg-yellow-200 p-2 rounded-lg"
             onClick={() => {
               filteredList = listOfRest.filter(
                 (rest) => rest.info.avgRating > 4
