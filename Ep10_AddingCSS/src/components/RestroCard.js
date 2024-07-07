@@ -1,8 +1,5 @@
 import { CDN_URL } from '../utils/constants'
-const stylecard = {
-  backgroundColor: '#fff0f0',
-  color :'#000000'
-}
+
 const RestroCard = (props) => {
   const { resData } = props;
   const {
@@ -14,13 +11,15 @@ const RestroCard = (props) => {
     sla = { deliveryTime },
   } = resData?.info;
   return (
-    <div className="res-card" style={stylecard}>
+    <div className="w-40 m-2 p-2">
+      <div className='m-4 p-4'>
       <img
         src=
           {CDN_URL +
           cloudinaryImageId}
-        className="res-img"
+        className="w-[200px]"
       ></img>
+      </div>
       <h3>{name}</h3>
       <h4>{cuisines.join(" ")}</h4>
       <h4>{avgRating}</h4>

@@ -14,16 +14,15 @@ const Body = () => {
   }, [])
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/mapi/homepage/getCards?lat=12.96340&lng=77.58550"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550"
     )
     const jsonData = await data.json()
+    // console.log(jsonData)
     setlistOfRest(
-      jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     )
     setFilteredRest(
-      jsonData?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     )
   }
   if(useOnlineStatus===false){
@@ -73,7 +72,7 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredRest.map((res) => (
           <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
             <RestroCard resData={res} />{" "}
