@@ -3,12 +3,14 @@ import { useState } from "react"
 import { useEffect } from "react"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom"
-import useOnlineStatus from '../utils/useOnlineStatus'
+import useOnlineStatus from "../utils/useOnlineStatus"
+import { withPromotedLabel } from "./RestroCard"
 const Body = () => {
   const [listOfRest, setlistOfRest] = useState([])
   const [filteredRest, setFilteredRest] = useState([])
   const [searchText, setSearchText] = useState("")
- 
+  const RestaurantWithPromoted = withPromotedLabel(RestroCard);
+  //console.log(listOfRest)
   useEffect(() => {
     fetchData()
   }, [])
@@ -19,17 +21,17 @@ const Body = () => {
     const jsonData = await data.json()
     // console.log(jsonData)
     setlistOfRest(
-      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
     )
     setFilteredRest(
-      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
     )
   }
-  if(useOnlineStatus===false){
-    return(
-      <h1>Network low check your internet connection</h1>
-    )
-  };
+  if (useOnlineStatus === false) {
+    return <h1>Network low check your internet connection</h1>
+  }
   // if (listOfRest.length == 0) {
   //   return <Shimmer />
   // }
@@ -75,7 +77,11 @@ const Body = () => {
       <div className="flex flex-wrap">
         {filteredRest.map((res) => (
           <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
-            <RestroCard resData={res} />{" "}
+            {res.info.isOpen ? (
+              <RestaurantWithPromoted resData={res} />
+            ) : (
+              <RestroCard resData={res} />
+            )}
           </Link>
         ))}
       </div>

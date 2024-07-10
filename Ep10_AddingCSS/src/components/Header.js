@@ -5,8 +5,10 @@ const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("LogIn")
   return (
     <div className="flex justify-between bg-pink-100 shadow mb-2 px-2">
-      <div className="logo-container">
-        <img src={LOGO_URL} alt="logo" className="w-20 "></img>
+      <div className="flex justify-between align-middle">
+      <div className="mt-4 ">
+        <img src={LOGO_URL} alt="logo" className="w-20 rounded-2xl"></img>
+        </div>
       </div>
 
       <div className="flex items-center p-4">
