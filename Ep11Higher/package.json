@@ -1,0 +1,33 @@
+{
+  "name": "ep11higher",
+  "version": "1.0.0",
+  "description": "React",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lavanya0404/React-js.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Lavanya Y M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lavanya0404/React-js/issues"
+  },
+  "homepage": "https://github.com/lavanya0404/React-js#readme",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
