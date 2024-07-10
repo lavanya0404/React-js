@@ -1,3 +1,4 @@
+import React from "react"
 import { useParams } from "react-router-dom"
 import useRestaurantMenu from "../utils/useRestaurantMenu"
 import { CDN_URL } from "../utils/constants"
@@ -23,7 +24,7 @@ const RestaurantMenu = () => {
     (c) =>
       c.card?.card["@type"] ==
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  )
+  ) || {}
   console.log(categories)
   return (
     <div className="Rest-menu">
@@ -45,8 +46,8 @@ const RestaurantMenu = () => {
         <div>
           <h2 className="font-bold text-lg"> Menu 😋</h2>
         </div>
-        {categories.map((category) => (
-          <RestaurantCategory />
+        {categories.map((category)=>(
+          <RestaurantCategory/>
         ))}
       </div>
       <div className="flex justify-center"></div>

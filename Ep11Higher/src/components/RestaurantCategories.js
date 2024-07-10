@@ -1,5 +1,5 @@
-
-const RestaurantCategory = ()=>{
+import React from "react";
+const RestaurantCategory = ({category})=>{
   return(
     <div>
       RestaurantCategories
