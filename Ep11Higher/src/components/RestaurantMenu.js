@@ -1,31 +1,28 @@
-import React from "react"
-import { useParams } from "react-router-dom"
-import useRestaurantMenu from "../utils/useRestaurantMenu"
-import { CDN_URL } from "../utils/constants"
-import RestaurantCategory from "./RestaurantCategories"
+import React from "react";
+import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import { CDN_URL } from "../utils/constants";
+import RestaurantCategory from "./RestaurantCategories";
 
 const RestaurantMenu = () => {
-  const { resId } = useParams()
-  const resInfo = useRestaurantMenu(resId)
-  // if (resInfo === null) <Shimmer />
+  const { resId } = useParams();
+  const resInfo = useRestaurantMenu(resId);
+
   const {
     name = "",
     cuisines = [],
     costForTwoMessage = "",
     avgRating = "",
     cloudinaryImageId = "",
-  } = resInfo?.data?.cards[2]?.card?.card?.info || {}
+  } = resInfo?.data?.cards[2]?.card?.card?.info || {};
 
-  const { itemCards = [] } =
-    resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card
-      ?.card || {}
+  const { itemCards = [] } = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card || {};
 
-  const categories = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+  const category = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
     (c) =>
-      c.card?.card["@type"] ==
-      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  ) || {}
-  console.log(categories)
+      c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+
   return (
     <div className="Rest-menu">
       <div className="flex m-3 p-4 justify-center">
@@ -33,7 +30,8 @@ const RestaurantMenu = () => {
           <img
             className="w-[200px] h-[200px] rounded-md hover:shadow-2xl"
             src={CDN_URL + cloudinaryImageId}
-          ></img>
+            alt={name}
+          />
         </div>
         <div className="ml-5 m-7 pt-10">
           <h1 className="font-bold justify-center">{name}</h1>
@@ -45,13 +43,21 @@ const RestaurantMenu = () => {
       <div className="flex justify-center">
         <div>
           <h2 className="font-bold text-lg"> Menu 😋</h2>
+          <br></br>
         </div>
-        {categories.map((category)=>(
-          <RestaurantCategory/>
-        ))}
-      </div>
+        </div>
+        <div className="text-center">
+          {category && category.length > 0 ? (
+            category.map((x, index) => (
+              <RestaurantCategory key={index} data={x?.card?.card} />
+            ))
+          ) : (
+            <p>No categories available.</p>
+          )}
+        </div>
       <div className="flex justify-center"></div>
     </div>
-  )
-}
-export default RestaurantMenu
+  );
+};
+
+export default RestaurantMenu;
