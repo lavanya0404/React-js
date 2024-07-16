@@ -30,9 +30,11 @@ const RestroCard = (props) => {
 export const withPromotedLabel = (RestroCard) => {
   return (props) => {
     return (
-      <div>
-        <label> IS OPEN </label>
+      <div className="flex relative">
         <RestroCard {...props} />
+        <div className="bg-pink-200 p-2 rounded-md absolute left-0 top-0 ">
+          Open
+        </div>
       </div>
     )
   }

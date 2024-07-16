@@ -1,27 +1,34 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import useRestaurantMenu from "../utils/useRestaurantMenu";
-import { CDN_URL } from "../utils/constants";
-import RestaurantCategory from "./RestaurantCategories";
+import React, { useState } from "react"
+import { useParams } from "react-router-dom"
+import useRestaurantMenu from "../utils/useRestaurantMenu"
+import { CDN_URL } from "../utils/constants"
+import RestaurantCategory from "./RestaurantCategories"
 
 const RestaurantMenu = () => {
-  const { resId } = useParams();
-  const resInfo = useRestaurantMenu(resId);
-
+  const { resId } = useParams()
+  const resInfo = useRestaurantMenu(resId)
+  const [showIndex, setShowIndex] = useState(null)
   const {
     name = "",
     cuisines = [],
     costForTwoMessage = "",
     avgRating = "",
     cloudinaryImageId = "",
-  } = resInfo?.data?.cards[2]?.card?.card?.info || {};
+  } = resInfo?.data?.cards[2]?.card?.card?.info || {}
 
-  const { itemCards = [] } = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card || {};
+  const { itemCards = [] } =
+    resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card
+      ?.card || {}
 
   const category = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
     (c) =>
-      c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  );
+      c.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  )
+
+  const handleCategoryClick = (index) => {
+    setShowIndex((prevIndex) => (prevIndex === index ? null : index))
+  }
 
   return (
     <div className="Rest-menu">
@@ -45,19 +52,23 @@ const RestaurantMenu = () => {
           <h2 className="font-bold text-lg"> Menu 😋</h2>
           <br></br>
         </div>
-        </div>
-        <div className="text-center">
-          {category && category.length > 0 ? (
-            category.map((x, index) => (
-              <RestaurantCategory key={index} data={x?.card?.card} />
-            ))
-          ) : (
-            <p>No categories available.</p>
-          )}
-        </div>
+      </div>
+      <div className="text-center">
+        {category && category.length > 0 ? (
+          category.map((x, index) => (
+            <RestaurantCategory
+              key={index}
+              data={x?.card?.card}
+              showList={index === showIndex}
+              setShowIndex={() => handleCategoryClick(index)}
+            />
+          ))
+        ) : (
+          <p>No categories available.</p>
+        )}
+      </div>
       <div className="flex justify-center"></div>
     </div>
-  );
-};
-
-export default RestaurantMenu;
+  )
+}
+export default RestaurantMenu

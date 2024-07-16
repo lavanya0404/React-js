@@ -19,7 +19,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550"
     )
     const jsonData = await data.json()
-    // console.log(jsonData)
+     //console.log(jsonData)
     setlistOfRest(
       jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
@@ -74,6 +74,7 @@ const Body = () => {
           </button>
         </div>
       </div>
+      
       <div className="flex flex-wrap">
         {filteredRest.map((res) => (
           <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
