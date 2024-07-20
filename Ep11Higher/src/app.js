@@ -1,4 +1,4 @@
-import React, { lazy,Suspense } from "react"
+import React, { lazy,Suspense, useEffect, useState } from "react"
 import ReactDOM from "react-dom/client"
 import { RouterProvider, createBrowserRouter,Outlet } from "react-router-dom"
 import Header from "./components/Header"
@@ -8,7 +8,7 @@ import Contact from "./components/Contact"
 import RestaurantMenu from "./components/RestaurantMenu"
 import ErrorElement from "./components/ErrorElement"
 import Grocery from "./components/Grocery";
-
+import UserContext from "./utils/userContext"
 
 /*
  - Lazy loading
@@ -20,7 +20,16 @@ import Grocery from "./components/Grocery";
 const Grocery = lazy(()=>import ("./components/Grocery"));
 const About = lazy(()=>import ("./components/About"));
 const AppLayout = () => {
+  const [userName,setUserName] = useState();
+
+  useEffect(()=>{
+    const data={
+      name: ""
+    };
+    setUserName(data.name)
+  },[])
   return (
+    <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
     <div>
       <Header />
       {/* if path is / add body 
@@ -28,6 +37,7 @@ const AppLayout = () => {
       if path is contact add contact */}
       <Outlet />
     </div>
+    </UserContext.Provider>
   )
 }
 const appRouter = createBrowserRouter([

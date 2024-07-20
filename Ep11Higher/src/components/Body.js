@@ -1,10 +1,10 @@
 import RestroCard from "./RestroCard"
-import { useState } from "react"
-import { useEffect } from "react"
+import { useState,useEffect,useContext } from "react"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus"
 import { withPromotedLabel } from "./RestroCard"
+import UserContext from "../utils/userContext"
 const Body = () => {
   const [listOfRest, setlistOfRest] = useState([])
   const [filteredRest, setFilteredRest] = useState([])
@@ -35,6 +35,7 @@ const Body = () => {
   // if (listOfRest.length == 0) {
   //   return <Shimmer />
   // }
+  const {loggedInUser,setUserName} = useContext(UserContext)
   return (
     <div className="body">
       <div className="flex justify-between items-center">
@@ -59,6 +60,17 @@ const Body = () => {
           >
             Search
           </button>
+        </div>
+        
+        <div className="m-4">
+          <label>User Name : </label>
+          <input
+            type="text"
+            className="px-4 mx-4 h-[50px] w-[280px]"
+            placeholder="Change User Name"
+            value={loggedInUser}
+            onChange={(e)=>setUserName(e.target.value)}
+          />
         </div>
         <div className="m-4">
           <button

@@ -14,12 +14,12 @@ class About extends Component {
     return (
       <div>
         <h1>About Us</h1>
-        <div>
+        {/* <div>
           Logged In user
           <UserContext.Consumer>
             {({loggedInUser})=><h1 className="font-serif">{loggedInUser}</h1>}
           </UserContext.Consumer>
-        </div>
+        </div> */}
         <UserClass
           location={"Bengaluru"}
           contact={"lavanya@gmail.com"}
